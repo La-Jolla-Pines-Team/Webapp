@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>Subscribe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+
+    <link rel="icon" type="image/x-icon" href="https://www.lajollapines.com/index_resource/site_icon.png" />
+
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .margin {
+            margin: 0 !important;
+        }
+    </style>
+
+</head>
+
+<body class="yellow">
+    <div id="login-page" class="row">
+
+        <div class="col s12 z-depth-6 card-panel">
+
+            <div class="subscribe-form">
+
+                <div class="row">
+
+                    <div class="input-field col s12 center">
+                        <p class="center  login-form-text" style="font-weight: 800;">Enter Email To Receive Your Daily
+                            IQuote</p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <form name="subscribeForm" action="/webapp/iquote/subscribe" method="post" required>
+
+                        <div class="input-field col s12">
+
+                            <i class="mdi-communication-email prefix" style="color: goldenrod;"> </i>
+                            <input name="email" type="email" class="validate" placeholder="Email Address" required />
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect orange waves-light col s12"
+                                    id="subscribe">Subscribe</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+</body>
+
+</html>

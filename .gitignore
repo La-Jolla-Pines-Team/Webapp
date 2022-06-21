@@ -1,0 +1,6 @@
+#images
+*.jpg
+
+#folders
+node_modules/
+index_resource/
