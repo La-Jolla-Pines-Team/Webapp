@@ -4,6 +4,7 @@
 #folders
 node_modules/
 index_resource/
+iquote/web_scrapping/images/
 
 # Logs
 logs
