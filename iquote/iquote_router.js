@@ -1,3 +1,4 @@
+const iquote = require('./iquote');
 const express = require('express');
 
 const router = express.Router();
@@ -18,6 +19,11 @@ router.get('/webapp/iquote', (req, res) => {
 
 router.get('/webapp/iquote/subscribed', (req, res) => {
     res.render('subscribeSuccessful.ejs');
+})
+
+router.get('/webapp/iquote/demo', (req, res) => {
+    iquote.sendIquoteEmail();
+    res.render('iquote.ejs');
 })
 
 router.post('/webapp/iquote/subscribe', urlencodedParser, (req, res) => {

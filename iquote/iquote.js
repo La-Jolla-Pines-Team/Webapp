@@ -1,4 +1,3 @@
-var cron = require('node-cron');
 var nodemailer = require('nodemailer');
 const { email_html } = require("../iquote/email_html");
 const { get_dbinfo } = require("../database/get_dbinfo");
@@ -8,7 +7,7 @@ const nthline = require('nthline');
 var dayOfWeekDigit;
 var maillist = '';
 var email_list_query = "SELECT * FROM iquote;";
-var sender_address = '"La Jolla Pines Team" <pinesoflajolla@outlook.com>';
+var sender_address = '"La Jolla Pines Team" <lajollapines@hotmail.com>';
 var message_body = '';
 const subject_line = [
     "This Sunday, take some time & prep for success",
@@ -30,8 +29,8 @@ var transporter = nodemailer.createTransport({
         ciphers: 'SSLv3'
     },
     auth: {
-        user: 'pinesoflajolla@outlook.com',
-        pass: 'Ucsd2022!'
+        user: 'lajollapines@hotmail.com',
+        pass: '3Edc@vgy7'
     }
 
 });
@@ -47,19 +46,7 @@ var mailOptions = {
 
 };
 
-var sendEmail = cron.schedule('29 9 * * Monday-Sunday', () => {
-    console.log('Time to Send Email');
-
-    sendIquoteEmail();
-
-}, {
-    scheduled: true,
-    timezone: "America/Los_Angeles"
-});
-
-sendEmail.start();
-
-function sendIquoteEmail() {
+const sendIquoteEmail = () => {
     get_dbinfo(email_list_query, async function (rows) {
 
         //collect all emails in db into a maillist
@@ -98,10 +85,12 @@ function sendIquoteEmail() {
  */
 async function pick_quote() {
     random_linenum = Math.floor(Math.random() * 2394);
-    return await nthline(random_linenum, 'https://www.lajollapines.com/iquote/web_scrapping/scrapped_quotes.txt');
+    return await nthline(random_linenum, '/var/www/html/iquote/web_scrapping/scrapped_quotes.txt');
 }
 
 function pick_image() {
     random_imagenum = Math.floor(Math.random() * 510) + 1;
     return "https://www.lajollapines.com/iquote/web_scrapping/images/local_image" + random_imagenum + ".jpg";
 }
+
+exports.sendIquoteEmail = sendIquoteEmail;
