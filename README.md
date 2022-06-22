@@ -4,7 +4,7 @@ https://www.lajollapines.com/
 ## Brief info about mini projects on our site
 
 ### iQuote
-```bash
+```
 # Authors
 Yuxuan (Charles) Wu
 Hao Cheng
