@@ -10,7 +10,9 @@ Yuxuan (Charles) Wu
 Hao Cheng
 
 # Functionality
-Users can register their emails on the iquote web page and can expect to receive (if our server is not under maintenance) daily feed of inspirational quotes and soul-healing images.
+Users can register their emails on the iquote web page and
+receive feed of inspirational quotes and soul-healing images
+after clicking the Email Demo button.
 Link to iQuote app:
 https://www.lajollapines.com/webapp/iquote
 
