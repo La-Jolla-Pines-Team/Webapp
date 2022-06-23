@@ -17,7 +17,9 @@ server.use(urlencodedParser);
  */
 
 //import different routes
-const iquote = require('./iquote/iquote_router.js')
+const iquote = require('./iquote/iquote_router.js');
+const weatherblog = require('./weablog/weablog_router.js');
 
 //iquote
 server.use(iquote);
+server.use(weatherblog);
