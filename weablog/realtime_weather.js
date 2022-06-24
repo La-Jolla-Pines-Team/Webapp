@@ -3,7 +3,9 @@ const WEATHER = {
     region: undefined,
     icon: undefined,
     description: undefined,
-    temperature: undefined
+    temperature: undefined,
+    sunrise: undefined,
+    sunset: undefined
 }
 
 const TEMP_RANGE = {
@@ -32,50 +34,64 @@ WEATHER.description = weatherJSON['weather'][0]['description'];
 console.log(WEATHER.description);
 WEATHER.temperature = weatherJSON['main']['temp'];
 console.log(WEATHER.temperature);
+WEATHER.sunrise = weatherJSON['sys']['sunrise'];
+console.log(WEATHER.sunrise);
+WEATHER.sunset = weatherJSON['sys']['sunset'];
+console.log(WEATHER.sunset);
+
+//update sunrise & sunset time to webpage
+var sunrise_time = new Date(WEATHER.sunrise * 1000);
+document.getElementById("sunriseTime").innerText = "Sun rises at: " + sunrise_time.toLocaleTimeString();
+
+var sunset_time = new Date(WEATHER.sunset * 1000);
+document.getElementById("sunsetsTime").innerText = "Sun sets at: " + sunset_time.toLocaleTimeString();
+
+//update weather icon to webpage
+document.getElementById("weatherIcon").src = "/weablog/weather_icons/" + WEATHER.icon + ".png";
 
 //change app theme with respect to temperature
-if (WEATHER.temperature > TEMP_RANGE.hot) {
-    //when temperature is boiling
-    COLOR.r = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
-    COLOR.g = timeOfDayMultiplier(17, (WEATHER.icon).slice(-1));
-    COLOR.b = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
-}
-else if (WEATHER.temperature > TEMP_RANGE.warm) {
-    //when temperature is hot
-    COLOR.r = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
-    COLOR.g = timeOfDayMultiplier(102, (WEATHER.icon).slice(-1));
-    COLOR.b = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
-}
-else if (WEATHER.temperature > TEMP_RANGE.cold) {
-    //when temperature is warm
-    COLOR.r = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
-    COLOR.g = timeOfDayMultiplier(196, (WEATHER.icon).slice(-1));
-    COLOR.b = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
-}
-else if (WEATHER.temperature > TEMP_RANGE.freezing) {
-    //when temperature is cold
-    COLOR.r = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
-    COLOR.g = timeOfDayMultiplier(171, (WEATHER.icon).slice(-1));
-    COLOR.b = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
-}
-else {
-    //when temperature is freezing
-    COLOR.r = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
-    COLOR.g = timeOfDayMultiplier(111, (WEATHER.icon).slice(-1));
-    COLOR.b = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
-}
+temperatureTheme();
 
-var temperature_color = rgbToHex(COLOR.r, COLOR.g, COLOR.b);
+function temperatureTheme() {
+    if (WEATHER.temperature > TEMP_RANGE.hot) {
+        //when temperature is boiling
+        COLOR.r = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
+        COLOR.g = timeOfDayMultiplier(17, (WEATHER.icon).slice(-1));
+        COLOR.b = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
+        document.getElementById("tempIcon").src = "/weablog/temp_icons/hot.png";
+    }
+    else if (WEATHER.temperature > TEMP_RANGE.warm) {
+        //when temperature is hot
+        COLOR.r = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
+        COLOR.g = timeOfDayMultiplier(102, (WEATHER.icon).slice(-1));
+        COLOR.b = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
+        document.getElementById("tempIcon").src = "/weablog/temp_icons/hot.png";
+    }
+    else if (WEATHER.temperature > TEMP_RANGE.cold) {
+        //when temperature is warm
+        COLOR.r = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
+        COLOR.g = timeOfDayMultiplier(196, (WEATHER.icon).slice(-1));
+        COLOR.b = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
+        document.getElementById("tempIcon").src = "/weablog/temp_icons/warm.png";
+    }
+    else if (WEATHER.temperature > TEMP_RANGE.freezing) {
+        //when temperature is cold
+        COLOR.r = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
+        COLOR.g = timeOfDayMultiplier(171, (WEATHER.icon).slice(-1));
+        COLOR.b = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
+        document.getElementById("tempIcon").src = "/weablog/temp_icons/warm.png";
+    }
+    else {
+        //when temperature is freezing
+        COLOR.r = timeOfDayMultiplier(0, (WEATHER.icon).slice(-1));
+        COLOR.g = timeOfDayMultiplier(111, (WEATHER.icon).slice(-1));
+        COLOR.b = timeOfDayMultiplier(255, (WEATHER.icon).slice(-1));
+        document.getElementById("tempIcon").src = "/weablog/temp_icons/cold.png";
+    }
 
-document.body.style.backgroundColor = temperature_color;
+    var temperature_color = rgbToHex(COLOR.r, COLOR.g, COLOR.b);
 
-function rgbToHex(r, g, b) {
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}
-
-function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
+    document.body.style.backgroundColor = temperature_color;
 }
 
 function timeOfDayMultiplier(num, timeOfDay) {
@@ -87,4 +103,13 @@ function timeOfDayMultiplier(num, timeOfDay) {
         //when it is day time return the original num
         return num;
     }
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
 }

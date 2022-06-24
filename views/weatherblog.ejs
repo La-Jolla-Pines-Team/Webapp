@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <title>Subscribe</title>
+    <title>Weather Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 
     <link rel="icon" type="image/x-icon" href="https://www.lajollapines.com/index_resource/site_icon.png" />
@@ -14,6 +14,7 @@
         html,
         body {
             height: 100%;
+            width: 100%;
         }
 
         html {
@@ -22,8 +23,34 @@
         }
 
         body {
+            height: 100%;
+            width: 100%;
             display: table-cell;
-            vertical-align: middle;
+            vertical-align: top;
+        }
+
+        img {
+            float: left;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 33.33%;
+            padding: 10px;
         }
 
         .margin {
@@ -34,15 +61,50 @@
 </head>
 
 <body>
-    <div id="login-page" class="row">
+    <div class="container">
 
-        <div class="col s12 z-depth-6 card-panel">
+        <div class="row s12 z-depth-4 card-panel">
+            <p class="center" vertical-align="center">
+                City
+            </p>
 
-            <script type='text/javascript' src="/weablog/realtime_weather.js" 
-                id="fetchInfo" weatherJSON="<%= JSON.stringify(weatherJSON) %>" type="module">
+            <img class="section" src="/weablog/other_icons/sandiego.png" alt="City Name"
+                vertical-align="center">
+
+            <p class="center" vertical-align="center">
+                Weather
+            </p>
+
+            <img class="section" id="weatherIcon" src="/weablog/weather_icons/01d.png" alt="WeatherIcon"
+                vertical-align="center">
+                
+            <p class="center" vertical-align="center">
+                Temperature
+            </p>
+
+            <img class="section" id="tempIcon" src="/weablog/temp_icons/cold.png" alt="TempIcon"
+                vertical-align="center">
+        </div>
+
+        <div class="row s12 z-depth-4 card-panel">      
+            <p id="sunriseTime" class="center" vertical-align="center">
+                Sunrise Time
+            </p>
+
+            <img class="section" src="/weablog/other_icons/sunrise.png" alt="sunriseIcon" vertical-align="center">
+
+            <p id="sunsetsTime" class="center" vertical-align="center">
+                Sunsets Time
+            </p>
+
+            <img class="section" src="/weablog/other_icons/sunsets.png" alt="sunsetsIcon" vertical-align="center">
+        </div>
+
+        <script type='text/javascript' id="fetchInfo" src="/weablog/realtime_weather.js"
+            weatherJSON="<%= JSON.stringify(weatherJSON) %>" type="module">
             </script>
 
-        </div>
+    </div>
 
 </body>
 
