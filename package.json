@@ -22,6 +22,7 @@
     "nthline": "^1.0.2",
     "openweather-apis": "^4.4.2",
     "pm2": "^5.2.0",
-    "request-ip": "^2.2.0"
+    "request-ip": "^2.2.0",
+    "typed.js": "^2.0.12"
   }
 }

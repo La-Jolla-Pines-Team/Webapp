@@ -7,6 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <title>Weather Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
     <link rel="icon" type="image/x-icon" href="https://www.lajollapines.com/index_resource/site_icon.png" />
 
@@ -56,6 +57,10 @@
         .margin {
             margin: 0 !important;
         }
+
+        .typed-cursor {
+            font-size: 20px;
+        }
     </style>
 
 </head>
@@ -68,8 +73,7 @@
                 City
             </p>
 
-            <img class="section" src="/weablog/other_icons/sandiego.png" alt="City Name"
-                vertical-align="center">
+            <img class="section" src="/weablog/other_icons/sandiego.png" alt="City Name" vertical-align="center">
 
             <p class="center" id="weatherDescription" vertical-align="center">
                 Weather
@@ -77,7 +81,7 @@
 
             <img class="section" id="weatherIcon" src="/weablog/weather_icons/01d.png" alt="WeatherIcon"
                 vertical-align="center">
-                
+
             <p class="center" id="temperature" vertical-align="center">
                 Temperature
             </p>
@@ -86,7 +90,7 @@
                 vertical-align="center">
         </div>
 
-        <div class="row s12 z-depth-4 card-panel">      
+        <div class="row s12 z-depth-4 card-panel">
             <p id="sunriseTime" class="center" vertical-align="center">
                 Sunrise Time
             </p>
@@ -99,6 +103,28 @@
 
             <img class="section" src="/weablog/other_icons/sunsets.png" alt="sunsetsIcon" vertical-align="center">
         </div>
+
+        <div class="row s12 z-depth-4 card-panel">
+            <button class="btn waves-effect waves-light blue" id="postBlog" action="" method="">
+                Post Blog
+            </button>
+            <div id="typed-strings">
+                <p><Strong>Weather Blog</Strong> changes it's <b>color theme</b> according to today's temperature.</p>
+                <p><Strong>Weather Blog</Strong> updates real-time <b>weather data</b> in San Diego to the web page.</p>
+                <p><Strong>Weather Blog</Strong> gives precise <b>sunrise & sunset time</b> so you won't miss them.</p>
+            </div>
+            <span id="typed"></span>
+            <style>
+                #typed {
+                    font-size: 20px;
+                    margin-left: 20px;
+                }
+            </style>
+
+        </div>
+
+        <script src="/weablog/typed_content.js">
+        </script>
 
         <script type='text/javascript' id="fetchInfo" src="/weablog/realtime_weather.js"
             weatherJSON="<%= JSON.stringify(weatherJSON) %>" type="module">

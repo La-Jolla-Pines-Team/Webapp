@@ -94,6 +94,7 @@ function temperatureTheme() {
     var temperature_color = rgbToHex(COLOR.r, COLOR.g, COLOR.b);
 
     document.body.style.backgroundColor = temperature_color;
+    document.getElementById("postBlog").style.backgroundColor = temperature_color;
 }
 
 function timeOfDayMultiplier(num, timeOfDay) {
