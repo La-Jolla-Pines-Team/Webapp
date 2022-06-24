@@ -46,8 +46,10 @@ document.getElementById("sunriseTime").innerText = "Sun rises at: " + sunrise_ti
 var sunset_time = new Date(WEATHER.sunset * 1000);
 document.getElementById("sunsetsTime").innerText = "Sun sets at: " + sunset_time.toLocaleTimeString();
 
-//update weather icon to webpage
+//update weather data to webpage
 document.getElementById("weatherIcon").src = "/weablog/weather_icons/" + WEATHER.icon + ".png";
+document.getElementById("weatherDescription").innerText = WEATHER.description;
+document.getElementById("temperature").innerText = WEATHER.temperature + "°C";
 
 //change app theme with respect to temperature
 temperatureTheme();
