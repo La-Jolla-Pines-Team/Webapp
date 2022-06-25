@@ -32,8 +32,7 @@
 
         img {
             float: left;
-            margin-right: 10px;
-            margin-left: 10px;
+            margin-right: 50px;
         }
 
         p {
@@ -42,16 +41,19 @@
 
         .center {
             margin: auto;
-            width: 50%;
+            width: 100%;
         }
 
         .row {
             display: flex;
+            align-items: center;
+            flex-direction: row;
         }
 
         .column {
             flex: 33.33%;
             padding: 10px;
+            margin-top: 30px;
         }
 
         .margin {
@@ -61,6 +63,10 @@
         .typed-cursor {
             font-size: 20px;
         }
+
+        .btn {
+            margin: auto;
+        }
     </style>
 
 </head>
@@ -68,47 +74,50 @@
 <body>
     <div class="container">
 
-        <div class="row s12 z-depth-4 card-panel">
-            <p class="center" vertical-align="center">
-                City
-            </p>
+        <div class="column s12 z-depth-4 card-panel center">
+            <div class="row">
+                <p class="center" vertical-align="center">
+                    City
+                </p>
 
-            <img class="section" src="/weablog/other_icons/sandiego.png" alt="City Name" vertical-align="center">
+                <img class="section" src="/weablog/other_icons/sandiego.png" alt="City Name" vertical-align="center">
 
-            <p class="center" id="weatherDescription" vertical-align="center">
-                Weather
-            </p>
+                <p class="center" id="weatherDescription" vertical-align="center">
+                    Weather
+                </p>
 
-            <img class="section" id="weatherIcon" src="/weablog/weather_icons/01d.png" alt="WeatherIcon"
-                vertical-align="center">
+                <img class="section" id="weatherIcon" src="/weablog/weather_icons/01d.png" alt="WeatherIcon"
+                    vertical-align="center">
 
-            <p class="center" id="temperature" vertical-align="center">
-                Temperature
-            </p>
+                <p class="center" id="temperature" vertical-align="center">
+                    Temperature
+                </p>
 
-            <img class="section" id="tempIcon" src="/weablog/temp_icons/cold.png" alt="TempIcon"
-                vertical-align="center">
+                <img class="section" id="tempIcon" src="/weablog/temp_icons/cold.png" alt="TempIcon"
+                    vertical-align="center">
+            </div>
+
+            <div class="row">
+                <p id="sunriseTime" class="center" vertical-align="center">
+                    Sunrise Time
+                </p>
+
+                <img class="section" src="/weablog/other_icons/sunrise.png" alt="sunriseIcon" vertical-align="center">
+
+                <p id="sunsetsTime" class="center" vertical-align="center">
+                    Sunsets Time
+                </p>
+
+                <img class="section" src="/weablog/other_icons/sunsets.png" alt="sunsetsIcon" vertical-align="center">
+            </div>
         </div>
 
-        <div class="row s12 z-depth-4 card-panel">
-            <p id="sunriseTime" class="center" vertical-align="center">
-                Sunrise Time
-            </p>
 
-            <img class="section" src="/weablog/other_icons/sunrise.png" alt="sunriseIcon" vertical-align="center">
 
-            <p id="sunsetsTime" class="center" vertical-align="center">
-                Sunsets Time
-            </p>
-
-            <img class="section" src="/weablog/other_icons/sunsets.png" alt="sunsetsIcon" vertical-align="center">
-        </div>
-
-        <div class="row s12 z-depth-4 card-panel">
-            <button class="btn waves-effect waves-light blue" id="postBlog" action="" method="">
-                Undecided
-            </button>
-            <div id="typed-strings">
+        <div class="column s12 z-depth-4 card-panel">
+            <div class="section">
+            </div>
+            <div class="row section" id="typed-strings">
                 <p><Strong>Weather Blog</Strong> changes it's <b>color theme</b> according to today's temperature.</p>
                 <p><Strong>Weather Blog</Strong> updates real-time <b>weather data</b> in San Diego to the web page.</p>
                 <p><Strong>Weather Blog</Strong> gives precise <b>sunrise & sunset time</b> so you won't miss them.</p>
@@ -120,6 +129,16 @@
                     margin-left: 20px;
                 }
             </style>
+
+            <div class="section">
+            </div>
+            <div class="row section">
+                <button class="btn waves-effect waves-light blue" id="postBtn" onclick="postBlog()">
+                    Post Blog
+                </button>
+                <script src="/weablog/user_activity.js"></script>
+            </div>
+
 
         </div>
 

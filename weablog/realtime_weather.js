@@ -27,17 +27,11 @@ var weatherJSON = JSON.parse(weatherData);
 
 //Initilize local variables with weatherJSON
 WEATHER.region = weatherJSON['name'];
-console.log(WEATHER.region);
 WEATHER.icon = weatherJSON['weather'][0]['icon'];
-console.log(WEATHER.icon);
 WEATHER.description = weatherJSON['weather'][0]['description'];
-console.log(WEATHER.description);
 WEATHER.temperature = weatherJSON['main']['temp'];
-console.log(WEATHER.temperature);
 WEATHER.sunrise = weatherJSON['sys']['sunrise'];
-console.log(WEATHER.sunrise);
 WEATHER.sunset = weatherJSON['sys']['sunset'];
-console.log(WEATHER.sunset);
 
 //update sunrise & sunset time to webpage
 var sunrise_time = new Date(WEATHER.sunrise * 1000);
@@ -94,7 +88,6 @@ function temperatureTheme() {
     var temperature_color = rgbToHex(COLOR.r, COLOR.g, COLOR.b);
 
     document.body.style.backgroundColor = temperature_color;
-    document.getElementById("postBlog").style.backgroundColor = temperature_color;
 }
 
 function timeOfDayMultiplier(num, timeOfDay) {
